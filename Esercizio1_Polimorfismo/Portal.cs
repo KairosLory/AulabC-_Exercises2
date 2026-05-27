@@ -1,28 +1,28 @@
 ﻿using System;
 
-public enum UserRole
+public enum UserRole // Enum che serve a dividere i processi dentro Portal, senza usare la classe "Type"
 {
     Student,
     Professor
 }
 
-public static class Portal
+public static class Portal // Classe che gestisce il portale online dell'università
 {
-	public static UserRole StartPortal()
+	public static UserRole StartPortal() // Inizio del portale dove l'utente deve decidere con quale ruolo loggarsi
 	{
         Console.WriteLine("Benevenuto nel portale digitale dell'Università di Lorenzo!");
         Console.Write("Con che tipo di ruolo vuoi loggarti? (studente/professore)");
 
         string inputRoleString = (Console.ReadLine() ?? "Spiacente, ma è una null string").Trim().ToLower();
 
-        while(inputRoleString != "studente" &&  inputRoleString != "professore")
+        while(inputRoleString != "studente" &&  inputRoleString != "professore") // Ciclo per gestire casi contrari all'inserimento del ruolo
         {
             Console.WriteLine("Mi dispiace ma hai inserito un ruolo non valido o non presente!");
             Console.Write("Reinserisci il ruolo: ");
             inputRoleString = (Console.ReadLine() ?? "Spiacente, ma è una null string").Trim().ToLower();
         }
 
-        UserRole typeReturnStartPortal = inputRoleString switch
+        UserRole typeReturnStartPortal = inputRoleString switch // Switch per assegnare l'Enum corrispondente al ruolo
         {
             "studente" => UserRole.Student,
             "professore" => UserRole.Professor,
@@ -32,7 +32,7 @@ public static class Portal
         return typeReturnStartPortal;
     }
 
-    public static void ChoosePortal(UserRole typeOfPerson)
+    public static void ChoosePortal(UserRole typeOfPerson) // Metodo che dirige l'azione del portale a seconda del tipo di ruolo dell'utente
     {
         if (typeOfPerson == UserRole.Student)
         {
@@ -44,7 +44,7 @@ public static class Portal
         }
     }
 
-    public static void ShowMenuStudent()
+    public static void ShowMenuStudent() // Metodo che gestisce l'interfaccia dal punto di vista dello studente
     {
 
         Console.WriteLine("Benvenuto studente!");
@@ -77,7 +77,7 @@ public static class Portal
         PortalDisplayPersonalInfo(student);
 
     }
-    public static void ShowMenuProfessor()
+    public static void ShowMenuProfessor() // Metodo che gestisce l'interfaccia dal punto di vista del professore
     {
         Console.WriteLine("Benvenuto professore!");
 
@@ -109,7 +109,7 @@ public static class Portal
         PortalDisplayPersonalInfo(professor);
     }
 
-    public static void PortalDisplayPersonalInfo(Person person)
+    public static void PortalDisplayPersonalInfo(Person person) // Metodo che sfrutta il polimorfismo per stampare correttamente a console senza badare al tipo specifico dell'oggetto
     {
         person.DisplayPersonInfo();
     }
