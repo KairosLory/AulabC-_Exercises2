@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            Type typeStartPortal = Portal.StartPortal();
+            UserRole typeStartPortal = Portal.StartPortal();
             Portal.ChoosePortal(typeStartPortal);
             
 

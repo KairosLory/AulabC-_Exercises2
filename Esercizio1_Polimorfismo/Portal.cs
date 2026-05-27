@@ -1,8 +1,14 @@
 ﻿using System;
 
+public enum UserRole
+{
+    Student,
+    Professor
+}
+
 public static class Portal
 {
-	public static Type StartPortal()
+	public static UserRole StartPortal()
 	{
         Console.WriteLine("Benevenuto nel portale digitale dell'Università di Lorenzo!");
         Console.Write("Con che tipo di ruolo vuoi loggarti? (studente/professore)");
@@ -16,19 +22,19 @@ public static class Portal
             inputRoleString = (Console.ReadLine() ?? "Spiacente, ma è una null string").Trim().ToLower();
         }
 
-        Type typeReturnStartPortal = inputRoleString switch
+        UserRole typeReturnStartPortal = inputRoleString switch
         {
-            "studente" => typeof(Student),
-            "professore" => typeof(Professor),
+            "studente" => UserRole.Student,
+            "professore" => UserRole.Professor,
             _ => throw new Exception("Qualcoa è andato storto...")
         };
 
         return typeReturnStartPortal;
     }
 
-    public static void ChoosePortal(Type typeOfPerson)
+    public static void ChoosePortal(UserRole typeOfPerson)
     {
-        if (typeOfPerson == typeof(Student))
+        if (typeOfPerson == UserRole.Student)
         {
             ShowMenuStudent();
         }
