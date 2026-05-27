@@ -1,7 +1,14 @@
 ﻿using System;
 
-public interface IMenu
+public enum EnumMenu // Enum per avere dopo una divisione dell'azione e non utilizzare il "Type" di C#.
 {
+	Dish,
+	Drink
+}
+
+public interface IMenu // Utilizzo dell'interfaccia in modo da utilizzare il polimorfismo nella stampa dei menu.
+{
+	public EnumMenu typeOfMeal { get; }
 	public void PrintOnMenu();
 }
 
@@ -20,7 +27,7 @@ public class Restaurant
 	{
 		foreach(var item in this.Menu)
 		{
-			if (item is Drink)
+			if (item.typeOfMeal == EnumMenu.Drink)
 			{
 				continue;
 			}
@@ -28,7 +35,7 @@ public class Restaurant
 		}
         foreach (var item in this.Menu)
         {
-            if (item is Dish)
+            if (item.typeOfMeal == EnumMenu.Dish)
             {
                 continue;
             }

@@ -6,6 +6,7 @@ public class Dish : IMenu
 	public double Price { get; set; }
 	public List<string> Ingredients { get; set; }
 
+	public EnumMenu typeOfMeal { get; } = EnumMenu.Dish;
 
 	public Dish()
 	{
@@ -13,7 +14,7 @@ public class Dish : IMenu
 
     public void PrintOnMenu()
     {
-        Console.WriteLine($"Nome del piatto: {Name}\nPrezzo: {Price}€\nLista degli Ingredienti: {string.Join('\n', Ingredients)}");
+        Console.WriteLine($"Nome del piatto: {Name}\nPrezzo: {Price}€\nLista degli Ingredienti:\n{string.Join('\n', Ingredients)}");
         
     }
 }

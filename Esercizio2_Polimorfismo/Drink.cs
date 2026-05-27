@@ -4,7 +4,8 @@ public class Drink : IMenu
 {
 	public string Name { get; set; }
 	public double Price { get; set; }
-	public Drink()
+    public EnumMenu typeOfMeal { get; } = EnumMenu.Drink;
+    public Drink()
 	{
 	}
 
